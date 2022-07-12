@@ -1,0 +1,142 @@
+@use 'mixins' as m;
+$breakpoints: (
+  mobile: 768px,
+  tablet: 1024px,
+  laptop: 1240px,
+  desktop-lg: 1800px
+);
+
+@mixin breakpoint($breakpoint, $direction) {
+
+  // Get the breakpoint value.
+  $breakpoint-value: map-get($breakpoints, $breakpoint);
+  
+  @if $direction == min {
+    @media (min-width: $breakpoint-value) {
+      @content;
+    }
+  }
+} 
+// MOBILE
+  .hero{
+    @include breakpoint(mobile,min ){
+      .wrapper{
+        padding-inline: 5rem;
+        padding-block-end: 5rem;
+      }
+      &__header{
+        padding-top: 4rem;
+        margin-inline: 8rem;
+      }
+      &__content{
+        .cta{
+          padding: 1.5rem 6rem;
+        }
+        img{
+          width: 80%;
+        }
+
+      }
+    }
+  }
+  .main{
+    @include breakpoint(mobile,min ){
+      .card__comunity{
+        max-width: 45rem;
+        padding: 5rem 6rem;
+        .cta{
+          padding: 1.5rem 6rem;
+        }
+      }
+    }
+  }
+  .footer{
+    @include breakpoint(mobile,min ){
+      padding-inline:6rem ;
+
+    }
+  }
+//TABLET
+.hero{
+  @include breakpoint(tablet,min ){
+    &__header{
+      justify-content: space-between;
+      img{
+        width: 20%;
+      }
+    }
+    background-image: url('../assets/images/bg-hero-desktop.svg');
+    background-position: center center;
+    &__content{
+      margin: 0 auto;
+      padding-block-start: 8rem;
+      max-inline-size: 140rem;
+      @include m.flex($gap:3rem);
+      &-texts{
+        width: 50%;
+        text-align: left;
+        @include m.flex(column,$justify:flex-end);
+        align-items: baseline;
+      }
+      img{
+        width: 55%;
+        margin: 0;
+      }
+    }
+  }
+}
+.main{
+  @include breakpoint(tablet,min ){
+    .card{
+      max-width: 98rem;
+      flex-direction: row;
+      text-align: left;
+      &:nth-child(2){
+        flex-direction: row-reverse;
+      }
+    }
+    .card__comunity{
+      max-width: 70rem;
+      width: 100%;
+      padding: 4rem ;
+    }
+  }
+}
+.footer{
+  @include breakpoint(tablet,min ){
+    max-inline-size: 140rem;
+    padding-inline: 10rem;
+    padding-block-start: 20rem;
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    grid-template-rows: 1fr;
+    column-gap: 15rem;
+    &__info{
+      margin-top: -5.8rem;
+      gap: 1.5rem;
+    }
+    &__links{
+      display: flex;
+      flex-wrap: wrap;
+      width: 100%;
+      li{
+        text-align: left;
+        width: 50%;
+      }
+    }
+    &__social{
+      grid-column: 3/-1;
+      width: 100%;
+      display: flex;
+      gap: 2rem;
+      justify-content: flex-start;
+    }
+    .copy{
+      grid-column: 2/-1;
+      text-align: right;
+      grid-row: 2/-1;
+      width: 100%;
+    }
+  }
+}
+

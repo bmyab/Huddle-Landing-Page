@@ -1,0 +1,93 @@
+@use 'colors';
+@use 'mixins';
+
+$headings:'Poppins', sans-serif;
+
+@mixin btnBase($bg-color,$color:white){
+  padding: 1.25rem 6rem;
+  border: none;
+  border-radius: 2rem; 
+  background-color: $bg-color;
+  color: $color;
+}
+@mixin btn-sn{
+  padding: 0.8rem 2.5rem;
+  background-color: #fff;
+  color: #000;
+  font-weight: 700;
+}
+.cta{
+  @include btnBase($bg-color:colors.$Pink);
+  cursor: pointer;
+  
+  &:hover{
+    opacity: 0.8;
+    font-weight: 500;
+  }
+  &-sm{
+    @extend .cta;
+    @include btn-sn();
+    cursor: pointer;
+    box-shadow: 0px 8px 9px -5px rgba(0,0,0,0.56);
+  -webkit-box-shadow: 0px 8px 9px -5px rgba(0,0,0,0.56);
+  -moz-box-shadow: 0px 8px 9px -5px rgba(0,0,0,0.56);
+    @media screen and(min-width:768px) {
+      padding: 1.1rem 3rem;
+    }
+    &:hover{
+      font-weight: 700;
+      color: #aaa;
+    }
+  }
+
+}
+.card{
+  max-width: 45rem;
+  border-radius: 1.5rem;
+  padding-block:4.5rem;
+  padding-inline: 2.8rem;
+  text-align: center;
+  background-color: white;
+  @include mixins.flex(column-reverse,$gap:7rem);
+  -webkit-box-shadow: 0px 0px 8px 1px #ccc;  
+  -moz-box-shadow: 0px 0px 8px 1px #ccc;
+  box-shadow: 0px 0px 8px 1px #ccc;
+  &__texts{
+    .subtitle{
+      font-size: 2.2rem;
+      font-family: $headings;
+      color: colors.$VeryDarkCyan;
+      margin-block-end: 1.5rem;
+    }
+    .paragraph-m{
+      font-weight: 400;
+      font-size: 1.6rem;
+      color: colors.$GrayishBlue;
+    }
+
+  }
+  &__grafico{
+    img{
+      width: 70%;
+    }
+  }
+}
+.card__comunity{
+  position: relative;
+  top: 100px;
+  @include mixins.flex(column);
+  @extend .card;
+  padding-block: 3.5rem;
+  padding-inline: 1.5rem;
+  .subtitle-c{
+    font-size: 1.8rem;
+  }
+  .cta{
+    padding: 1.25rem 4rem;
+  }
+}
+.wrapper{
+  padding-inline: 1.5rem;
+  padding-block-start: 5rem;
+  padding-block-end: 3rem;
+}

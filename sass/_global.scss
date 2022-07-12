@@ -1,0 +1,142 @@
+@use 'mixins' as m;
+@use 'colors' as c;
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&family=Poppins:wght@600&display=swap');
+
+$headings:'Poppins', sans-serif;
+$body:'Open Sans', sans-serif;
+
+html {
+  box-sizing: border-box;
+  font-size: 62.5%;
+}
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+  margin: 0;
+  padding: 0;
+}
+body{
+  width: 100vw;
+  display: grid;
+  place-content: center;
+  align-content: center;
+  font-size: 1.8rem;
+  font-family: $body;
+  overflow-x: hidden;
+}
+// Hero Section
+.hero{
+  background-color: c.$VeryPaleCyan;
+  background-image: url('../assets/images/bg-hero-mobile.svg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: -30px -65px ;
+  text-align: center;
+  
+  &__header{
+    @include m.flex($justify:space-between);
+    padding-top: 2rem;
+    margin-inline: 1rem;
+
+    &__img{
+      width: 30%;
+    }
+  }
+
+  &__content{
+    margin-top: 2.5rem;
+    .title{
+      font-family: $headings;
+      color: c.$VeryDarkCyan;
+    }
+    img{
+      width: 100%;
+      margin-block-start:7rem;
+    }
+    &-texts{
+      @include m.flex(column);
+    }
+  }
+}
+// Main Section
+.main{
+  @include m.flex(column,$gap:4rem);
+  background-color: #eee;
+}
+// Footer Section
+.footer{
+  background-color: c.$VeryDarkCyan;
+  padding-block-start:15rem;
+  padding-block-end:5rem;
+  padding-inline: 2rem;
+  font-size: 1.5rem;
+  color: c.$VeryPaleCyan;
+  font-weight: 300;
+  @include m.flex(column,$justify:flex-start,$align:flex-start,$gap:4rem);
+
+  &__info{
+    @include m.flex(column,$align:flex-start);
+    max-width: 60rem;
+ 
+    &-opc{
+      @include m.flex($align:flex-start);
+      img{
+        margin-top: 0.5rem;
+      }
+      &:nth-child(2){
+        margin-inline-end: 2.5rem;
+      }
+    }
+  }
+
+  &__links{
+    li{
+      list-style: none;
+      margin-block-end: 1.5rem;
+      text-align: left;
+      .link{
+        color: white;
+        text-decoration: none;
+        margin-block-end: 1.5rem;
+
+        &:hover{
+          text-decoration: underline;
+        }
+      }
+
+    }
+  }
+
+  &__social{
+    margin: 0 auto;
+    text-align: center;
+    
+    
+    i{
+      border: 1px solid white;
+      font-size: 1.5rem;
+      width: 32px;
+      height: 32px;
+      line-height: 3rem;
+      border-radius: 50%;
+      transition: color 0.2s ease-in,
+      border 0.2s ease-in;
+      cursor: pointer;
+
+      &:nth-child(2){
+        margin-inline: 0.5rem;
+      }
+      &:hover{
+        border: 1px solid c.$Pink;
+        color:c.$Pink;
+      }
+    }
+    
+  }
+  
+  .copy{
+    margin: 0 auto;
+  }
+
+}
